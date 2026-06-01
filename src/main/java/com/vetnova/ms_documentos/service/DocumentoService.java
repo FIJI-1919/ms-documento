@@ -29,11 +29,11 @@ public class DocumentoService {
     }
 
     public FichaDTO obtenerFicha(Long id) {
-        return webClient
-                .get()
-                .uri("http://localhost:8084/fichas/" + id)
-                .retrieve()
-                .bodyToMono(FichaDTO.class)
-                .block();
-    }
+    return webClient
+            .get()
+            .uri("http://localhost:8084/api/v1/fichas/" + id)
+            .retrieve()
+            .bodyToMono(FichaDTO.class)
+            .block();
+}
 }
