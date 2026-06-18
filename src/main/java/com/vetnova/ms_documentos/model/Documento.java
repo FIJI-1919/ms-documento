@@ -1,34 +1,43 @@
 package com.vetnova.ms_documentos.model;
 
-import jakarta.persistence.*;
+import java.time.LocalDate;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "documentos")
 @Data
 @NoArgsConstructor
-
+@AllArgsConstructor
 public class Documento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "La mascota es obligatoria")
-    private String mascota;
+    private Long fichaId;
 
-    @NotBlank(message = "El tipo de documento es obligatorio")
-    @Size(min = 3, max = 50)
+    private Long mascotaId;
+
     private String tipoDocumento;
 
-    @NotBlank(message = "La descripcion es obligatoria")
-    @Size(min = 5, max = 200)
     private String descripcion;
 
-    @NotBlank(message = "El veterinario es obligatorio")
     private String veterinario;
+
+    private LocalDate fechaEmision;
+
+    @PrePersist
+    public void asignarFechaEmision() {
+        this.fechaEmision = LocalDate.now();
+    }
 }

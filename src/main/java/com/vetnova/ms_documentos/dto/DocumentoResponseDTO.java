@@ -2,19 +2,20 @@ package com.vetnova.ms_documentos.dto;
 
 import java.time.LocalDate;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
-public class FichaDTO {
+public class DocumentoResponseDTO {
 
     private Long id;
-    private Long citaId;
+    private Long fichaId;
     private Long mascotaId;
-    private String diagnostico;
-    private String tratamiento;
-    private String observaciones;
+    private String tipoDocumento;
+    private String descripcion;
     private String veterinario;
-    private LocalDate fechaRegistro;
+    private LocalDate fechaEmision;
 }
