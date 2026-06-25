@@ -5,9 +5,7 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.stereotype.Service;
-
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
@@ -141,7 +139,7 @@ public class DocumentoService {
 
             return webClient
                     .get()
-                    .uri("http://localhost:8084/api/v1/fichas/" + fichaId)
+                    .uri("http://localhost:8085/api/v1/fichas/" + fichaId)
                     .retrieve()
                     .bodyToMono(FichaDTO.class)
                     .block();
